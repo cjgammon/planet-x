@@ -247,8 +247,8 @@ var Game = function () {
 		this.addSuns(world);
 		hero = new Hero(stage);
 		
-		document.body.addEventListener('mousedown', this.handle_MOUSE_DOWN.bind(this));
-		document.body.addEventListener('mouseup', this.handle_MOUSE_UP.bind(this));
+		//document.body.addEventListener('mousedown', this.handle_MOUSE_DOWN.bind(this));
+		//document.body.addEventListener('mouseup', this.handle_MOUSE_UP.bind(this));
 		
 		requestAnimationFrame(this.update.bind(this));
 	}
@@ -261,6 +261,9 @@ var Game = function () {
 		for (i = 0; i < 100; i += 1) {
 			suns[i].update();
 		}
+		
+		_position.x -= speed;
+		_position.y = VIEW_HEIGHT / 2 + Math.sin(_position.x / 200) * VIEW_HEIGHT / 4;
 		
 		hero.position.y = _position.y;
 		world.position.x = _position.x;
